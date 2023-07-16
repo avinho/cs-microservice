@@ -27,6 +27,6 @@ public class CartaoService {
     }
 
     public Cartao fromDTO(CartaoRequestDTO dto) {
-        return new Cartao(dto.nome(), dto.badeira(), dto.renda(), dto.limite());
+        return new Cartao(dto.nome(), dto.bandeira(), dto.renda(), dto.limite());
     }
 }

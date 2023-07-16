@@ -42,7 +42,7 @@ public class ClienteResource {
     @GetMapping(params = "cpf")
     public ResponseEntity<Cliente> findByCpf(@RequestParam("cpf") String cpf) {
         Optional<Cliente> cliente = service.findByCpf(cpf);
-        return cliente.map(value -> ResponseEntity.ok().body(value)).orElseGet(() -> ResponseEntity.notFound().build());
+        return cliente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/findAll")
