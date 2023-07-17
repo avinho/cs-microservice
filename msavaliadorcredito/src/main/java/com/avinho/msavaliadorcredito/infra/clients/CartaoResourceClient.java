@@ -2,7 +2,6 @@ package com.avinho.msavaliadorcredito.infra.clients;
 
 import com.avinho.msavaliadorcredito.domain.model.Cartao;
 import com.avinho.msavaliadorcredito.domain.model.CartaoCliente;
-import com.avinho.msavaliadorcredito.domain.model.Cliente;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

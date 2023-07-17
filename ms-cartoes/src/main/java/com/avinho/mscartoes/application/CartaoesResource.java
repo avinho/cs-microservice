@@ -1,7 +1,7 @@
 package com.avinho.mscartoes.application;
 
 import com.avinho.mscartoes.domain.Cartao;
-import com.avinho.mscartoes.domain.CartaoCliente;
+import com.avinho.mscartoes.domain.ClienteCartao;
 import com.avinho.mscartoes.infra.dto.CartaoRequestDTO;
 import com.avinho.mscartoes.infra.dto.CartoesPorClienteDTO;
 import lombok.RequiredArgsConstructor;
@@ -41,8 +41,8 @@ public class CartaoesResource {
 
     @GetMapping(params = "cpf")
     public ResponseEntity<List<CartoesPorClienteDTO>> getCartoesByCliente(@RequestParam("cpf") String cpf) {
-        List<CartaoCliente> cartoes = cartaoClienteService.listCartoesByCpf(cpf);
-        List<CartoesPorClienteDTO> listCartoes = cartoes.stream().map(cartaoClienteService::fromDomain).toList();
+        List<ClienteCartao> cartoes = cartaoClienteService.listCartoesByCpf(cpf);
+        List<CartoesPorClienteDTO> listCartoes = cartoes.stream().map(CartoesPorClienteDTO::fromModel).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(listCartoes);
     }

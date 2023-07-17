@@ -12,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class SituacaoCliente {
-
     private Cliente cliente;
     private List<CartaoCliente> cartoes;
 }

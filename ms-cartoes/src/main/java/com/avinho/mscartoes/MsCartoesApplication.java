@@ -1,5 +1,6 @@
 package com.avinho.mscartoes;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @EnableDiscoveryClient
 @Configuration
+@EnableRabbit
 public class MsCartoesApplication implements CommandLineRunner {
     @Value("${spring.application.name}")
     private String appName;

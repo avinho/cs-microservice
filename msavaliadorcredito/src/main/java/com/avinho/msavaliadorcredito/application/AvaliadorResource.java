@@ -2,9 +2,8 @@ package com.avinho.msavaliadorcredito.application;
 
 import com.avinho.msavaliadorcredito.application.exception.DadosClienteNotFoundException;
 import com.avinho.msavaliadorcredito.application.exception.ErroComunicacaoMicroserviceException;
-import com.avinho.msavaliadorcredito.domain.model.DadosAvaliacao;
-import com.avinho.msavaliadorcredito.domain.model.RetornoAvaliacaoCliente;
-import com.avinho.msavaliadorcredito.domain.model.SituacaoCliente;
+import com.avinho.msavaliadorcredito.application.exception.ErroSolicitacaoCartaoException;
+import com.avinho.msavaliadorcredito.domain.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +42,16 @@ public class AvaliadorResource {
             return ResponseEntity.notFound().build();
         } catch (ErroComunicacaoMicroserviceException e) {
             return ResponseEntity.status(HttpStatus.resolve(e.getErrorCode())).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("solicitacoes-carto")
+    public ResponseEntity solicitarCartao(@RequestBody DadosSolicitacaoEmissaoCartao dados) {
+        try {
+            ProtocoloSolicitacaoCartao protocolo = avaliadorCreditoService.solicitarEmissaoCartao(dados);
+            return ResponseEntity.ok(protocolo);
+        } catch (ErroSolicitacaoCartaoException e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }

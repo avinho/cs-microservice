@@ -4,13 +4,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
 @Data
-public class Cartao implements Serializable {
+public class Cartao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +22,12 @@ public class Cartao implements Serializable {
 
     private BigDecimal renda;
 
-    private BigDecimal limite;
+    private BigDecimal limiteBasico;
 
-    public Cartao(String nome, BandeiraCartao bandeira, BigDecimal renda, BigDecimal limite) {
+    public Cartao(String nome, BandeiraCartao bandeira, BigDecimal renda, BigDecimal limiteBasico) {
         this.nome = nome;
         this.bandeira = bandeira;
         this.renda = renda;
-        this.limite = limite;
+        this.limiteBasico = limiteBasico;
     }
 }

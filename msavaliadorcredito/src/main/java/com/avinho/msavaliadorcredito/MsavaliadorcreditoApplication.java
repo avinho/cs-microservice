@@ -1,5 +1,6 @@
 package com.avinho.msavaliadorcredito;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableDiscoveryClient
 @EnableFeignClients
 @Configuration
+@EnableRabbit
 public class MsavaliadorcreditoApplication implements CommandLineRunner {
     @Value("${spring.application.name}")
     private String appName;
