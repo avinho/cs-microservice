@@ -7,12 +7,14 @@ import com.avinho.mscartoes.infra.ClienteCartaoRepository;
 import com.avinho.mscartoes.infra.CartaoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class EmissaoCartaoSubscribe {
 
     private final CartaoRepository cartaoRepository;
@@ -32,7 +34,7 @@ public class EmissaoCartaoSubscribe {
             clienteCartaoRepository.save(clienteCartao);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error while saving cartao: {} ", e.getMessage());
         }
     }
 }

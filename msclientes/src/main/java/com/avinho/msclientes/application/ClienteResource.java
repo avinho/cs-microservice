@@ -50,7 +50,4 @@ public class ClienteResource {
         List<Cliente> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
-
-
-
 }

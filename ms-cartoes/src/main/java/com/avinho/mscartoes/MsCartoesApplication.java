@@ -1,5 +1,6 @@
 package com.avinho.mscartoes;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableDiscoveryClient
 @Configuration
 @EnableRabbit
+@Slf4j
 public class MsCartoesApplication implements CommandLineRunner {
     @Value("${spring.application.name}")
     private String appName;
